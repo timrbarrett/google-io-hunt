@@ -101,6 +101,7 @@ public class WriteActivity extends Activity implements OnItemClickListener {
         return new NdefMessage(
                 new NdefRecord[] {
                         // We're writing a URI whose intent will be intercepted by your app.
+						//="com.google.wolff.androidhunt" 
                         NdefRecord.createUri("https://nfchunt.appspot.com/f?c=" + aht.id )});
     }
 
