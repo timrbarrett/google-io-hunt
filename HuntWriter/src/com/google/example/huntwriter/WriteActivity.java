@@ -85,7 +85,7 @@ public class WriteActivity extends Activity implements OnItemClickListener {
         try {
             ndef.connect();
             ndef.writeNdefMessage(createTagPayload(aht));
-            ndef.makeReadOnly();
+            //ndef.makeReadOnly();
             ndef.close();
             Toast.makeText(this, "Tag created", Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
@@ -97,12 +97,16 @@ public class WriteActivity extends Activity implements OnItemClickListener {
         }
     }
 
-    private static NdefMessage createTagPayload(AHTag aht) throws UnsupportedEncodingException {
+    private static NdefMessage createTagPayload(AHTag aht) /*throws UnsupportedEncodingException*/ {
         return new NdefMessage(
                 new NdefRecord[] {
+					NdefRecord.createTextRecord(null,"/f?c="+aht.id)
+				,
                         // We're writing a URI whose intent will be intercepted by your app.
-				//createApplicationRecord("com.google.wolff.androidhunt");
-                        NdefRecord.createUri("https://nfchunt.appspot.com/f?c=" + aht.id )});
+				    NdefRecord.createApplicationRecord("com.google.wolff.androidhunt")
+					/*.NFCShimActivity"+aht.id*/
+                        //NdefRecord.createUri("https://nfchunt.appspot.com/f?c=" + aht.id )
+				});
     }
 
     int lastChecked = -1;

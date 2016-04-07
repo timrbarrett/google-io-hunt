@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -39,7 +40,10 @@ public class NFCShimActivity extends Activity {
                 return;
             }
             String message = data.get(0); // This should be the tag you found.
-            newintent.putExtra(NavActivity.EXTRA_MESSAGE, message);
+            
+			Toast.makeText(this, "Tag", Toast.LENGTH_SHORT).show();
+			
+			newintent.putExtra(NavActivity.EXTRA_MESSAGE, message);
             startActivity(newintent);
         } else {
             Log.w("AndroidHunt", "Shim: Nothing to intent");
