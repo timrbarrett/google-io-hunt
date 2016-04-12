@@ -73,16 +73,14 @@
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:scheme="https" android:host="nfchunt.appspot.com"
-                    android:pathPrefix="/f" />
+				<data android:mimeType="text/plain" />
             </intent-filter>
-
-            <intent-filter>
+			<intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:scheme="http" android:host="nfchunt.appspot.com"
-                    android:pathPrefix="/f" />
+				<data android:mimeType="text/plain" />
             </intent-filter>
+			
         </activity>
     </application>
 

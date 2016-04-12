@@ -100,7 +100,8 @@ public class WriteActivity extends Activity implements OnItemClickListener {
     private static NdefMessage createTagPayload(AHTag aht) /*throws UnsupportedEncodingException*/ {
         return new NdefMessage(
                 new NdefRecord[] {
-					NdefRecord.createTextRecord(null,"/f?c="+aht.id)
+					//NdefRecord.createTextRecord(null,aht.id)
+					NdefRecord.createUri("/f?c="+aht.id)
 				,
                         // We're writing a URI whose intent will be intercepted by your app.
 				    NdefRecord.createApplicationRecord("com.google.wolff.androidhunt")

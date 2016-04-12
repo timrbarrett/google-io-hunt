@@ -23,15 +23,19 @@ public class NFCShimActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.w("AndroidHunt", "NFCShimActivity: OnCreate");
-
+		
         super.onCreate(savedInstanceState);
 
         Intent intent = getIntent();
 
         if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(intent.getAction())) {
-            List<String> data = intent.getData().getQueryParameters("c");
+       
+			List<String> data = intent.getData().getQueryParameters("c");
             Intent newintent = new Intent(this, ClueActivity.class);
-            if (data.size() == 0) {
+            
+			//List<String> data=newintent.getData().getQueryParameters(null);
+		
+			if (data.size() == 0) {
                 Uri uri = intent.getData();
                 String note = uri.toString().substring(
                         uri.toString().lastIndexOf(':') + 1);
